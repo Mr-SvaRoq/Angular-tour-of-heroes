@@ -1,6 +1,10 @@
 import { Component, OnInit, Input } from '@angular/core';
 import {IHero} from "../interfaces/hero";
 
+import { ActivatedRoute } from '@angular/router';
+import { Location } from '@angular/common';
+
+import { HeroService }  from '../hero.service';
 
 
 @Component({
@@ -10,9 +14,23 @@ import {IHero} from "../interfaces/hero";
 })
 export class HeroDetailComponent implements OnInit {
   @Input() hero: IHero;
-  constructor() { }
+  constructor(
+    private route: ActivatedRoute,
+    private heroService: HeroService,
+    private location: Location
+  ) {}
 
-  ngOnInit() {
+  ngOnInit(): void {
+    this.getHero();
   }
 
+  getHero(): void {
+    const id = +this.route.snapshot.paramMap.get('id'); //he JavaScript (+) operator converts the string to a number, which is what a hero id should be.
+    this.heroService.getHero(id)
+      .subscribe(hero => this.hero = hero);
+  }
+
+  goBack(): void {
+    this.location.back();
+  }
 }

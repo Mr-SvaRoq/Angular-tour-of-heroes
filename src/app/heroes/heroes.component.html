@@ -1,20 +1,25 @@
-<h2>{{hero.name | uppercase}} Details</h2>
-<div><span>id: </span>{{hero.id}}</div>
-<div><span>name: </span>{{hero.name}}</div>
-<div>
-  <label>name:
-    <input [(ngModel)]="hero.name" placeholder="name"/>
-  </label>
-</div>
+<!--<h2>{{hero.name | uppercase}} Details 2</h2>-->
+<!--<div><span>id: </span>{{hero.id}}</div>-->
+<!--<div><span>name: </span>{{hero.name}}</div>-->
+<!--<div>-->
+  <!--<label>name:-->
+    <!--<input [(ngModel)]="hero.name" placeholder="name"/>-->
+  <!--</label>-->
+<!--</div>-->
 
 <h2>My Heroes</h2>
+//      (click)="onSelect(hero)"
+// [class.selected]="hero === selectedHero"
+<!--// '<app-hero-detail [hero]="selectedHero"></app-hero-detail>-->
+
 <ul class="heroes">
   <li *ngFor="let hero of heroes"
-      (click)="onSelect(hero)"
       [ngClass]="{selected88: !!selectedHero && selectedHero.id === hero.id ,selected14: !selectedHero}"
-      [class.selected]="hero === selectedHero">
-    <span class="badge">{{hero.id}}</span> {{hero.name}}
+      >
+    <a routerLink="/detail/{{hero.id}}">
+      <span class="badge">{{hero.id}}</span> {{hero.name}}
+    </a>
   </li>
 </ul>
 
-<app-hero-detail [hero]="selectedHero"></app-hero-detail>
+
