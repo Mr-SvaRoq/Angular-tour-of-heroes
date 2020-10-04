@@ -13,8 +13,8 @@ export class HeroService {
 
   getHeroes(): Observable<Hero[]> {
     // TODO: send the message _after_ fetching the heroes
-    this.messageService.add('HeroService: fetched heroes 222222222222222');
-    this.messageService.add('HeroService: fetched heroes 333333333333333');
+    this.messageService.add('HeroService: fetched heroes');
+    this.messageService.add('HeroService: fetched heroes');
     return of(HEROES); //of(HEROES) returns an Observable<Hero[]> that emits a single value, the array of mock heroes.
   }
 
